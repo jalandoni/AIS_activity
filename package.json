@@ -1,0 +1,29 @@
+{
+  "name": "mongooseactivity",
+  "version": "1.0.0",
+  "description": "Mongoose Activity",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Josephine Morre",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jalandoni/AIS_activity.git"
+  },
+  "keywords": [
+    "activity",
+    "is"
+  ],
+  "bugs": {
+    "url": "https://github.com/jalandoni/AIS_activity/issues"
+  },
+  "homepage": "https://github.com/jalandoni/AIS_activity#readme"
+}

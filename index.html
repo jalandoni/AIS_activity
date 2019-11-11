@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Borrow Book</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-material-design@4.1.1/dist/css/bootstrap-material-design.min.css"
+        integrity="sha384-wXznGJNEXNG1NFsbm0ugrLFMQPWswR3lds2VeinahP8N0zJw9VWSopbjv2x7WCvX" crossorigin="anonymous">
+    <style>
+        body{
+            background-image: url('http://localhost:3000/lib.jpg');
+            background-repeat: no-repeat;
+            background-position: cover;
+            background-size: cover;
+
+        }
+
+        #search{
+            width: 100px;
+        }
+
+        .btn {
+            margin-right: 2px;
+            width: 200px;
+            height: 45px;
+        }
+
+        .btn-xs {
+            height: 35px;
+            width: 100px;
+            font-size: 12px;
+        }
+
+        .other {
+            width: 30%;
+        }
+
+        .others {
+            width: 15%;
+        }
+
+        .action {
+            width: 40%-2px;
+        }
+
+        label {
+            font-size: 20px;
+        }
+
+        .card{
+            background-color: rgba(255, 255, 255, .15);  
+            
+        }
+
+        text{
+            font-size: 50px;
+            color:blue;
+        }
+
+
+                .close {
+            font-size: 16px;
+        }
+
+        .close p {
+            float: right !important;
+
+        }
+        
+        
+    </style>
+</head>
+<body>
+    <div class="row justify-content-center">
+    <img src="http://localhost:3000/logo.png"  style="width:300px"></div>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+            <div class="card-body row no-gutters align-items-center">
+                <div class="col-auto">
+                    <i class="fa fa-search" aria-hidden="true"></i>
+                </div>
+                <div class="col">
+                    <input class="form-control form-control-lg form-control-borderless" id="searhBook" type="search"
+                        placeholder="Search by Book ID">
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-raised btn-success search" id="search" type="submit">Search</button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <center>
+        <button type="button" class="btn btn-sucess btn btn-raised btn-primary" id="create" data-toggle="button"
+            aria-pressed="false" autocomplete="off">
+            Borrow Book
+        </button>
+    </center>
+    <center>
+        <button type="button" class="btn btn-sucess btn btn-raised btn-primary" id="lborrower" data-toggle="button"
+            aria-pressed="false" autocomplete="off">
+            List of borrowers
+        </button>
+    </center>
+
+
+    <div class="row classList">
+        <div class="col-md-2"></div>
+        <div class="col-md-8 ">
+            <div class="card">
+                <center>
+
+                    <br>
+                    <br>
+                    <div class="container">
+                        <table id="table" class="table table-bordered text-center">
+                            <div class="header">
+                                <thead>
+                                    <tr class="table-info">
+
+                                        <th class="other text-center">Borrower Name</th>
+                                        <th class="other text-center">Book ID</th>
+                                        <th class="others text-center">Title</th>
+                                        <th class="others text-center">Date Borrowed</th>
+                                        <th class="action text-center">Action</th>
+                                        <th class="action text-center">Remarks</th>
+                                    </tr>
+                                </thead>
+                            </div>
+
+                            <tbody id="body">
+                                <tr id="inform">
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+                        <center>
+                            <br>
+                            <button type="submit" class="btn btn-primary btn-raised btn-secondary" id="closeTable"
+                                data-toggle="button" aria-pressed="false" autocomplete="off">
+                                Close
+                            </button>
+                        </center>
+                </center>
+
+            </div>
+        </div>
+    </div>
+    </div>
+    <br><br>
+    <div class="form row">
+
+        <div class="col-md-4"></div>
+        <div class="col-md-4 card">
+            <br>
+            <br>
+            <div class="close">
+                <p>x</p>
+            </div>
+            <form action="">
+                <div class="form-group">
+                    <label for="iname">First Name</label>
+                    <input type="text" id="item" class="form-control" required>
+                </div>
+                <div class="form-group">
+                        <label for="iname">Last Name</label>
+                        <input type="text" id="item2" class="form-control"required>
+                    </div>
+                <div class="form-group">
+                    <label for="quantity">Book ID</label>
+                    <input type="text" id="bookId" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Book</label>
+                    <input type="text" id="quantity" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Date Borrowed</label>
+                    <input type="text" id="priority" class="form-control" required>
+                </div>
+                <center>
+                    <br>
+                    <button type="submit" id="submit" class="btn btn-primary save  btn-raised btn-success" data-toggle="button"
+                        aria-pressed="false" autocomplete="off">
+                        Save Information
+                    </button>
+                </center>
+            </form>
+            <br>
+        </div>
+    </div>
+    <div class="form-update row">
+
+        <div class="col-md-4"></div>
+        <div class="col-md-4 card">
+            <br>
+            <br>
+            <div class="close">
+                <p>x</p>
+            </div>
+            <form action="">
+                <div class="form-group">
+                    <label for="iname">Borrower Name</label>
+                    <input type="text" id="update-item" class="form-control" placeholder="Enter complete name" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">ID</label>
+                    <input type="text" id="update-bookId" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Title</label>
+                    <input type="text" id="update-quantity" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Date</label>
+                    <input type="text" id="update-priority" class="form-control" required>
+                </div>
+                <center>
+                    <br>
+                    <button type="submit" class="btn btn-primary save-update btn-outline-success" data-toggle="button"
+                        aria-pressed="false" autocomplete="off">
+                        Update
+                    </button>
+                </center>
+            </form>
+            <br>
+        </div>
+    </div>
+
+    <div class="form-search row">
+
+        <div class="col-md-4"></div>
+        <div class="col-md-4 card">
+            <br>
+            <br>
+            <div class="close">
+                <p>x</p>
+            </div>
+            <form action="">
+                <div class="form-group">
+                    <label for="iname">Borrower Name</label>
+                    <input type="text" id="search-item" class="form-control" placeholder="Enter complete name" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">ID</label>
+                    <input type="text" id="search-bookId" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="quantity">Title</label>
+                    <input type="text" id="search-quantity" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Date Borrowed</label>
+                    <input type="text" id="search-priority" class="form-control" required>
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+    <script src="https://unpkg.com/popper.js@1.12.6/dist/umd/popper.js" integrity="sha384-fA23ZRQ3G/J53mElWqVJEGJzU0sTs+SvzG8fXVWP+kJQ1lwFAOkcUOysnlKJC33U"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth() + 1;
+            var yyyy = today.getFullYear();
+            today = yyyy + '/' + mm + '/' + dd;
+
+            var idUpdate;
+            hideAll();
+            $('#closeTable').on("click", function (e) {
+                e.preventDefault();
+
+                hideAll();
+            });
+            $('body').bootstrapMaterialDesign();
+            $("#create").click(function () {
+                $('#priority').val(today)
+                showForm()
+
+            });
+            function showForm() {
+                $(".form").show();
+                $(".form-update").hide();
+                $(".form-search").hide();
+                $(".classList").hide();
+            }
+
+            function hideAll() {
+                $(".form").hide();
+                $(".form-update").hide();
+                $(".form-search").hide();
+                $(".classList").hide();
+            }
+            function hideForm() {
+                $(".form").hide();
+                $(".form-update").hide();
+                $(".form-search").hide();
+                $(".classList").show();
+            }
+            function showUpdateForm() {
+                $(".form").hide();
+                $(".form-update").show();
+                $(".classList").hide();
+            }
+
+            function showSearchForm() {
+                $(".form").hide();
+                $(".form-update").hide();
+                $(".classList").hide();
+                $(".form-search").show();
+            }
+
+            $('#lborrower').on("click", function (e) {
+                e.preventDefault();
+
+                hideForm();
+            });
+
+
+
+            function addRow(element) {
+
+                console.log(element);
+                var info = ["item", "bookId", "quantity", "priority"];
+                var row = $("<tr>", {
+                    id: element._id,
+                    item: element.item,
+                    bookId: element.bookId,
+                    quantity: element.quantity,
+                    priority: element.priority,
+
+                });
+                for (var i = 0; i < info.length; i++) {
+                    $(row).append($("<td>").text($(row).attr(info[i])));
+                }
+                $(row).append("<td> <button class='btn btn-success btn-xs update btn btn-raised btn-info'>Edit</button> <button class='btn btn-success btn-xs delete btn btn-raised btn-danger'>Delete</button>");
+                $(row).append("<td><select><option>Borrow</option><option>Returned</option></select> ");
+                $("tbody").append($(row));
+
+            }
+
+            function retrieveItem(id) {
+                console.log(id);
+                $.ajax({
+                    type: "get",
+                    url: "/item/retrieve/" + id,
+                    success: function (response) {
+                        console.log(response)
+                        $('#update-item').val(response.item);
+                        $('#update-bookId').val(response.bookId);
+                        $('#update-quantity').val(response.quantity);
+                        $('#update-priority').val(response.priority);
+                    },
+                    error: function (error) {
+                        console.log("error")
+                    }
+                })
+
+            }
+            function retrieveAll() {
+                $.ajax({
+                    type: "get",
+                    url: "/item/retrieve/all",
+                    success: function (response) {
+                        $("tbody tr").remove();
+                        response.forEach(function (element) {
+                            addRow(element);
+                        })
+                    },
+                    error: function (error) {
+                        console.log("error")
+                    }
+                })
+            }
+
+            retrieveAll();
+
+            $('#submit').on("click", function (e) {
+                e.preventDefault();
+                var item = $("#item").val() + " " +$("#item2").val();
+                var bookId = $("#bookId").val();
+                var quantity = $("#quantity").val();
+                var priority = $("#priority").val();
+                if (item == "" || bookId == "" || quantity == "" || priority == "") {
+                    Swal.fire({
+                        type: "error",
+                        title: 'ERROR',
+                        text: 'Please fill in all the requirements.'
+                    })
+                }
+                else if (item != "" && bookId != "" && quantity != "" && priority != "") {
+
+                    $.ajax({
+                        type: "put",
+                        url: "http://localhost:3000/item/create",
+                        crossDomain: true,
+                        data: JSON.stringify({ item: item, bookId: bookId, quantity: quantity, priority: priority }),
+                        success: function (response) {
+                            if (response == "Item has already taken!") {
+                                Swal.fire({
+                                    type: "error",
+                                    title: 'ERROR',
+                                    text: response
+                                })
+                            } else {
+                                hideForm();
+                                Swal.fire({
+                                    type: "success",
+                                    title: 'SUCCESS',
+                                    text: 'Successfully created!'
+                                })
+                                response.forEach(function (element) {
+                                    addRow(element);
+                                })
+                                var item = $("#item").val('');
+                                var bookId = $("#bookId").val('');
+                                var quantity = $("#quantity").val('');
+                                var priority = $("#priority").val('');
+                            }
+                        },
+                        error: function (err) {
+                            console.log('error');
+                        }
+                    })
+                }
+
+
+
+            });
+
+            $(".close").click(function () {
+                hideForm();
+            })
+
+            $(document).on("click", ".update", function () {
+                showUpdateForm();
+                idUpdate = $(this).parent().parent().attr("id");
+                retrieveItem($(this).parent().parent().attr("id"));
+
+                $(".save-update").on("click", function () {
+                    var item = $("#update-item").val();
+                    var bookId = $("#update-bookId").val();
+                    var quantity = $("#update-quantity").val();
+                    var priority = $("#update-priority").val();
+                    if (item == "" || bookId == "" || quantity == "" || priority == "") {
+                        Swal.fire({
+                            type: "error",
+                            title: 'ERROR',
+                            text: 'Please fill in all the requirements.'
+                        })
+                    }
+                    else if (item != "" && bookId != "" && quantity != "" && priority != "") {
+                        $.ajax({
+                            type: "post",
+                            url: "http://localhost:3000/item/update",
+                            crossDomain: true,
+                            data: JSON.stringify({ id: idUpdate, item: item, bookId: bookId, quantity: quantity, priority: priority }),
+                            success: function (response) {
+                                hideForm();
+                                Swal.fire({
+                                    type: "success",
+                                    title: 'SUCCESS',
+                                    text: 'Successfully updated!'
+                                })
+                                retrieveAll();
+
+                            },
+                            error: function (err) {
+                                console.log('error');
+                            }
+                        })
+                    }
+                });
+            });
+
+
+
+            $(document).on("click", ".search", function (e) {
+                e.preventDefault();
+                var bookSearch = $("#searhBook").val();
+                console.log(bookSearch)
+                $.ajax({
+                    type: "post",
+                    url: "http://localhost:3000/item/search",
+                    data: JSON.stringify({ bookSearch: bookSearch }),
+                    success: function (response) {
+                        console.log(response)
+                        if (response == '') {
+                            hideForm();
+                            Swal.fire({
+                                type: "error",
+                                title: 'ERROR',
+                                text: 'No id found.Pls try again!'
+                            })
+
+                        } else {
+                            $('#search-item').val(response.item);
+                            $('#search-bookId').val(response.bookId);
+                            $('#search-quantity').val(response.quantity);
+                            $('#search-priority').val(response.priority);
+                            showSearchForm();
+
+                        }
+                        retrieveAll();
+                    },
+
+                    error: function (er) {
+                        console.log("error");
+                    },
+
+                })
+                var bookSearch = $("#searhBook").val('');
+            });
+
+
+
+
+
+
+
+
+
+
+
+            $(document).on("click", ".delete", function () {
+                var deleteid = $(this).parent().parent().attr("id");
+                $(this).parents("tr").remove();
+                $.ajax({
+                    type: "delete",
+                    url: "http://localhost:3000/item/delete",
+                    data: JSON.stringify({ id: deleteid }),
+                    success: function (response) {
+                        console.log("delete");
+                    },
+                    error: function (er) {
+                        console.log("error");
+                    }
+                })
+            });
+        });
+    </script>
+</body>
+
+</html>
