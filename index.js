@@ -2,6 +2,7 @@ const express = require('express')
 const app = express();
 const path = require("path");
 const items = require("./item");
+require('dotenv').config();
 // const bodyParser = require('body-parser')
 
 var mongoose = require('mongoose');
@@ -135,6 +136,5 @@ app.delete("/item/delete", function (req, res) {
 	req.on('end', function () { })
 })
 
-app.listen(3000, function () {
-	console.log("Connected!")
-})
+const port = process.env.PORT || 3000;
+app.listen(port);
