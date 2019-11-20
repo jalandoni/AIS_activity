@@ -58,9 +58,9 @@ app.put("/item/create", function (req, res) {
 	req.on('data', function (req) {
 		store = JSON.parse(req);
 		const test2 = async function () {
-			const test = await items.getItem(store.item);
-			console.log(test);
-			// if (test == null) {
+			const test3 = await items.getItem(store.item);
+			console.log(test3);
+			if (test3 == null) {
 				const data = {
 					item: store.item,
 					bookId: store.bookId,
@@ -70,9 +70,9 @@ app.put("/item/create", function (req, res) {
 				await items.addPerson(data);
 				const item = await items.getLastItem()
 				res.send(item)
-			// } else {
-			// 	res.send("Item has already taken!")
-			// }
+			} else {
+				res.send("Item has already taken!")
+			}
 		}
 		test2();
 	});
