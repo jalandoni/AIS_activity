@@ -40,10 +40,10 @@ app.post("/item/update", function (req, res) {
 	console.log("updating...");
 	req.on('data', function (req) {
 		store = JSON.parse(req);
-		console.log(store.id);
+		// console.log(store.id);
 		const test = async function () {
 			const test1 = await items.getItem(store.item);
-				const result = await items.updateItem(store.id, store.item, store.bookId, store.quantity, store.priority);
+				const result = await items.updateItem(store.id, store.item, store.bookId, store.quantity);
 				const updated = await items.findItem(store.id);
 				res.send(updated)
 		}
@@ -59,7 +59,7 @@ app.put("/item/create", function (req, res) {
 		store = JSON.parse(req);
 		const test2 = async function () {
 			const test3 = await items.getItem(store.item);
-			console.log(test3);
+			// console.log(test3);
 			if (test3 == null) {
 				const data = {
 					item: store.item,
@@ -110,7 +110,7 @@ app.post("/item/search", function (req, res) {
 		const test = async function () {
 		const test1 = await items.searchItem(book.bookSearch);
 		res.send(test1);
-		console.log(test1)
+		// console.log(test1)
 	};
 	test();
 });
@@ -128,7 +128,7 @@ app.delete("/item/delete", function (req, res) {
 		res.send("success")
 		const test2 = async function () {
 			const p = await items.deleteItem(store.id);
-			console.log(p);
+			// console.log(p);
 		}
 		test2();
 

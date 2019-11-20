@@ -222,7 +222,7 @@
                 </div>
                 <div class="form-group">
                     <label for="priority">Date</label>
-                    <input type="text" id="update-priority" class="form-control" required>
+                    <input type="text" id="update-priority" class="form-control" disabled>
                 </div>
                 <center>
                     <br>
@@ -418,6 +418,7 @@
                                     title: 'ERROR',
                                     text: "Borrower already Exist. A minimum of one book to borrow please!"
                                 })
+                             
                             } else {
                                 hideForm();
                                 Swal.fire({
@@ -428,11 +429,12 @@
                                 response.forEach(function (element) {
                                     addRow(element);
                                 })
-                                var item = $("#item").val('')+ $("#item2").val('');
-                                var bookId = $("#bookId").val('');
-                                var quantity = $("#quantity").val('');
-                                var priority = $("#priority").val('');
+                               
                             }
+                            var item = $("#item").val('')+ $("#item2").val('');
+                            var bookId = $("#bookId").val('');
+                            var quantity = $("#quantity").val('');
+                            
                         },
                         error: function (err) {
                             console.log('error');
