@@ -43,7 +43,7 @@ app.post("/item/update", function (req, res) {
 		// console.log(store.id);
 		const test = async function () {
 			const test1 = await items.getItem(store.item);
-				const result = await items.updateItem(store.id, store.item, store.bookId, store.quantity);
+				const result = await items.updateItem(store.id, store.item, store.bookId, store.quantity,store.priority);
 				const updated = await items.findItem(store.id);
 				res.send(updated)
 		}
